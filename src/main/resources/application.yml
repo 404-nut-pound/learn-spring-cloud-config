@@ -4,16 +4,27 @@ server:
 spring:
   application:
     name: config-server
-  # profiles:
-  #   active:
-  #     - native # 로컬 저장소를 사용할 때
+  profiles:
+    active:
+      - native # 로컬 저장소를 사용할 때
   cloud:
     config:
       server:
-        # native:
-        #   search-locations: file://디렉토리 경로 # 로컬 저장소를 사용할 때
-        git:
-          uri: file://D:/dev/workspace_code/learn-spring-cloud/learn-spring-cloud-config-repo
-          # uri: https://github.com/404-nut-pound/learn-spring-cloud.git # 원격 Git 저장소를 사용할 때
-          # username:
-          # password:
+        native:
+          search-locations: file:///d:\\dev\\workspace_code\\learn-spring-cloud\\learn-spring-cloud-config-native # 로컬 저장소를 사용할 때
+        # git:
+        #   uri: file:///d:\\dev\\workspace_code\\learn-spring-cloud\\learn-spring-cloud-config-repo
+        #   uri: https://github.com/404-nut-pound/learn-spring-cloud.git # 원격 Git 저장소를 사용할 때
+        #   username:
+        #   password:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
